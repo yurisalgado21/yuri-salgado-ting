@@ -22,3 +22,9 @@ class Queue(AbstractQueue):
         ):
             return self.queue[index]
         raise IndexError("Índice Inválido ou Inexistente")
+
+    def get_by_name(self, name):
+        for i in self.queue:
+            if i["nome_do_arquivo"] == name:
+                return i
+        return None
