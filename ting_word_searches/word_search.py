@@ -27,7 +27,23 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    result_list = []
+    for i in range(len(instance.queue)):
+        search = instance.search(i)
+        ocorrencias = [
+            {"linha": idc + 1, "conteudo": line}
+            for idc, line in enumerate(search["linhas_do_arquivo"])
+            if word.lower() in line.lower()
+        ]
+        if ocorrencias:
+            result_list.append(
+                {
+                    "palavra": word,
+                    "arquivo": search["nome_do_arquivo"],
+                    "ocorrencias": ocorrencias,
+                }
+            )
+    return result_list
 
 
 """project = Queue()
